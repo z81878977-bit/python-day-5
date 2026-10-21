@@ -13,7 +13,7 @@ def welcome():
     Side Effects: Print a welcome message.
     Return: None
     """
-    pass
+    print("Welcome to Berklee Bank!")
 
 def login():
     """
@@ -74,3 +74,60 @@ def exit_bank():
     Return: None
     """
     pass
+
+def run_unit_tests():
+    print("Testing Berklee Bank functions")
+    print("Test 1: Check account data")
+    print("Test: Welcome")
+    welcome()  # Expected: Welcome to Berklee Bank!
+
+    print(bank_dict["Priya"]["balance"])  # Expected: 100
+    print(bank_dict["Amira"]["balance"])  # Expected: 0
+    print(bank_dict["Jordan"]["pin"])     # Expected: 9999
+
+    
+    
+    print("Test 2: Check withdrawal amount")
+
+    balance = 100
+    amount = 50
+    print(amount <= balance)  # Expected: True
+
+    amount = 200
+    print(amount <= balance)  # Expected: False
+
+    
+    
+    print("Test 3: Check deposit")
+
+    balance = 100
+    amount = 50
+
+    new_balance = balance + amount
+    print(new_balance)  # Expected: 150
+
+
+    
+    print("Test 4: Check withdrawal")
+
+    balance = 100
+    amount = 50
+
+    new_balance = balance - amount
+    print(new_balance)  # Expected: 50
+
+
+
+    print("Test 5: Check login")
+
+    name = "Priya"
+    pin = "4821"
+
+    print(bank_dict[name]["pin"] == pin)  # Expected: True
+
+    pin = "1234"
+    print(bank_dict[name]["pin"] == pin)  # Expected: False
+
+    
+    
+run_unit_tests()

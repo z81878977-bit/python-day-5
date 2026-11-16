@@ -23,7 +23,19 @@ def login():
     Side Effects: Ask the user to enter their name and PIN.
     Return: The user's account information if login is successful.
     """
-    pass
+    name = input("Enter your name: ")
+    pin = input("Enter your PIN: ")
+
+    if name in bank_dict:
+        if bank_dict[name]["pin"] == pin:
+            print("Login successful!")
+            return bank_dict[name]
+        else:
+            print("Incorrect PIN.")
+    else:
+        print("Account not found.")
+
+    return None
 
 def show_menu():
     """
@@ -33,7 +45,10 @@ def show_menu():
     Side Effects: Display the four menu options.
     Return: None
     """
-    pass
+    print("1. Check Balance")
+    print("2. Deposit")
+    print("3. Withdraw")
+    print("4. Exit")
 
 def check_balance():
     """
@@ -43,7 +58,12 @@ def check_balance():
     Side Effects: Display the current balance.
     Return: None
     """
-    pass
+    name = input("Enter your name: ")
+
+    if name in bank_dict:
+        print("Your balance is:", bank_dict[name]["balance"])
+    else:
+        print("Account not found.")
 
 def deposit():
     """
@@ -53,7 +73,19 @@ def deposit():
     Side Effects: Add money to the account balance.
     Return: None
     """
-    pass
+    name = input("Enter your name: ")
+
+    if name in bank_dict:
+        amount = float(input("Enter deposit amount: "))
+
+        if amount > 0:
+            bank_dict[name]["balance"] += amount
+            print("Deposit successful!")
+            print("New balance:", bank_dict[name]["balance"])
+        else:
+            print("Invalid amount.")
+    else:
+        print("Account not found.")
 
 def withdraw():
     """
@@ -63,7 +95,21 @@ def withdraw():
     Side Effects: Take money out of the account balance.
     Return: None
     """
-    pass
+    name = input("Enter your name: ")
+
+    if name in bank_dict:
+        amount = float(input("Enter withdrawal amount: "))
+
+        if amount <= 0:
+            print("Invalid amount.")
+        elif amount > bank_dict[name]["balance"]:
+            print("Not enough money.")
+        else:
+            bank_dict[name]["balance"] -= amount
+            print("Withdrawal successful!")
+            print("New balance:", bank_dict[name]["balance"])
+    else:
+        print("Account not found.")
 
 def exit_bank():
     """
@@ -73,7 +119,8 @@ def exit_bank():
     Side Effects: Display a goodbye message.
     Return: None
     """
-    pass
+    print("Thank you for using Berklee Bank!")
+    print("Goodbye!")
 
 def run_unit_tests():
     print("Testing Berklee Bank functions")
